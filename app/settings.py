@@ -27,7 +27,7 @@ SECRET_KEY = 'olf-))y56r_^x71vsic-pioase9322cq!mga-n3f&w0hhhu1+%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'principal',
+    'app'
 ]
 
 MIDDLEWARE = [
@@ -120,5 +122,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/static_root/'
+STATIC_MEDIA = '/media/'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '{}/media'.format(BASE_DIR)
 
 django_on_heroku.settings(locals())
