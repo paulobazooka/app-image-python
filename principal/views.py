@@ -11,7 +11,8 @@ def index(request):
 def effect(request):
     if request.method == 'POST' and request.FILES['inputFile']:
         image = pill(request.FILES['inputFile'])
-        image_file = InMemoryUploadedFile(image, None, 'foo.jpg', 'image/jpeg', image.tell, None)
+        image_file = InMemoryUploadedFile(image, None, 'foto_alterada.jpg', 'image/png', image.tell, None)
+
         print(f'Formato da imagem {type(image)}')
         print(f'Formato da imagem processada {type(image_file)}')
 
@@ -28,7 +29,7 @@ def effect(request):
 
         uploaded_file_url = fs.url(filename)"""
         return render(request, 'index.html', {
-            'uploaded_file_url': 'uploaded_file_url'
+            'uploaded_file_url': ''
         })
     return render(request, 'index.html')
 
@@ -37,8 +38,9 @@ def pill(image_io):
     im = Image.open(image_io)
     ltrb_border = (0, 0, 0, 10)
     im_with_border = ImageOps.expand(im, border=ltrb_border, fill='white')
+    im.rotate(90)
 
     buffer = BytesIO()
-    im_with_border.save(fp=buffer, format='JPEG')
+    im_with_border.save(fp=buffer, format='PNG')
     buff_val = buffer.getvalue()
     return ContentFile(buff_val)
