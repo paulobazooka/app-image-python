@@ -6,19 +6,19 @@
       {% csrf_token %}
         <div class="input-group">
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1" checked>
+                <input class="form-check-input" type="radio" name="effect" id="inlineRadio1" value="0" checked>
                 <label class="form-check-label" for="inlineRadio1">Preto & Branco</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2">
+                <input class="form-check-input" type="radio" name="effect" id="inlineRadio2" value="1">
                 <label class="form-check-label" for="inlineRadio2">Sépia</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="3">
+                <input class="form-check-input" type="radio" name="effect" id="inlineRadio3" value="2">
                 <label class="form-check-label" for="inlineRadio3">Negativo</label>
             </div>
             <div class="custom-file">
-                <input type="image"  id="inputFile" name="inputFile" accept="image/*" class="custom-file-input" aria-describedby="inputGroupFileAddon04">
+                <input type="file"  id="inputFile" name="inputFile" accept="image/*" class="custom-file-input" aria-describedby="inputGroupFileAddon04">
                 <label class="custom-file-label" for="inputFile">Escolha a imagem</label>
             </div>
             <div class="input-group-append">

@@ -1,5 +1,7 @@
-from PIL import Image, ImageOps
 import PIL.ImageOps
+from io import BytesIO
+from PIL import Image, ImageOps
+from django.core.files.base import ContentFile
 
 """
 Retorna a imagem em sepia
@@ -64,3 +66,19 @@ def negative(im: Image)->Image:
         image = im
 
     return ImageOps.invert(image)
+
+def pill(image_io, effect = 0):
+    im = Image.open(image_io)
+    im_p = None
+
+    if effect == '0':
+        im_p = bw(im)
+    if effect == '1':
+        im_p = sepia(im)
+    if effect == '2':
+        im_p = negative(im)
+
+    buffer = BytesIO()
+    im_p.save(fp=buffer, format='PNG')
+    buff_val = buffer.getvalue()
+    return ContentFile(buff_val)
